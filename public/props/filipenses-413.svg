@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+  </filter>
+  <g filter="url(#shadow)">
+    <text x="60" y="100" font-family="'Great Vibes', 'Brush Script MT', cursive, serif" font-size="82" fill="#F4E8D1">Tudo posso Naquele</text>
+    <text x="210" y="165" font-family="'Great Vibes', 'Brush Script MT', cursive, serif" font-size="62" fill="#F4E8D1">que me fortalece</text>
+    <text x="330" y="205" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-style="italic" fill="#E8D7BE">Filipenses 4:13</text>
+  </g>
+</svg>

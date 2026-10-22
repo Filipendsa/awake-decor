@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
+  </filter>
+  <g filter="url(#shadow)" stroke="#C59B63" stroke-width="4.5" stroke-linecap="round" fill="none">
+    <!-- Fine botanical line art stems & leaves -->
+    <path d="M 250 360 C 250 250 220 180 200 100"/>
+    <path d="M 250 360 C 250 230 290 170 320 80"/>
+    <path d="M 230 240 C 190 230 170 200 180 170 C 200 170 220 200 230 240 Z" fill="#C59B63" fill-opacity="0.15"/>
+    <path d="M 270 210 C 310 200 330 170 320 140 C 300 140 280 170 270 210 Z" fill="#C59B63" fill-opacity="0.15"/>
+    <circle cx="200" cy="90" r="14" stroke-width="3"/>
+    <circle cx="320" cy="70" r="16" stroke-width="3"/>
+  </g>
+</svg>

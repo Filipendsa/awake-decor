@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
+  </filter>
+  <g filter="url(#shadow)">
+    <text x="150" y="110" font-family="'Great Vibes', cursive, serif" font-size="95" fill="#C59B63">A Força</text>
+    <text x="110" y="170" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="300" letter-spacing="3" fill="#E8D7BE">QUE MOVE NOSSOS DIAS</text>
+  </g>
+</svg>

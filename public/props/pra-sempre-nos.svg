@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="5" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.35"/>
+  </filter>
+  <g filter="url(#shadow)">
+    <!-- Swirl with heart center -->
+    <path d="M 50 80 Q 200 40 310 75 Q 330 30 350 45 Q 370 30 390 75 Q 500 40 650 80" stroke="#C59B63" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <text x="140" y="160" font-family="'Great Vibes', cursive, serif" font-size="76" fill="#C59B63">Pra sempre, nós...</text>
+  </g>
+</svg>

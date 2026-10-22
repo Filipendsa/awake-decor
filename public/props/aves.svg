@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
+  </filter>
+  <g filter="url(#shadow)" fill="#B5814C">
+    <!-- Bird 1 (Pigeon/Dove silhouette) -->
+    <path d="M 60 140 C 60 90 90 60 130 50 C 145 46 155 40 160 30 C 165 32 175 42 165 60 C 185 85 190 120 180 150 C 140 180 80 170 60 140 Z"/>
+    <!-- Bird 2 flight outline -->
+    <path d="M 230 140 L 250 80 L 270 120 L 290 85 L 280 150 Z" stroke="#B5814C" stroke-width="6" fill="none" stroke-linejoin="round"/>
+    <!-- Bird 3 glide -->
+    <path d="M 340 120 C 350 90 380 90 400 110 C 390 130 360 140 340 120 Z"/>
+    <!-- Bird 4 soaring outline -->
+    <path d="M 440 140 L 460 70 L 475 110 L 500 80 L 485 150 Z" stroke="#B5814C" stroke-width="5" fill="none"/>
+    <!-- Bird 5 compact -->
+    <path d="M 540 130 C 540 100 560 90 580 95 C 570 120 560 140 540 130 Z"/>
+  </g>
+</svg>

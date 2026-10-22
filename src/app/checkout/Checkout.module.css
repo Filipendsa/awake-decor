@@ -1,0 +1,290 @@
+﻿.topBack {
+  padding: 12px 20px 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.header {
+  padding: 12px 20px 16px;
+}
+
+.kicker {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-awake-pink);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-top: 4px;
+}
+
+.form {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionCard {
+  background: #FFFFFF;
+  border: 1px solid var(--color-light-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.sectionHeading {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #4A5568;
+}
+
+.input {
+  border: 1.5px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--color-awake-blue);
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+}
+
+.prazoNotice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ECFDF5;
+  color: #065F46;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paymentBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  text-align: left;
+}
+
+.selectedPayment {
+  border-color: var(--color-awake-blue);
+  background: #F8FAFC;
+}
+
+.payIcon {
+  color: var(--color-awake-blue);
+}
+
+.payInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.payTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.paySub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.totalBar {
+  position: sticky;
+  bottom: 84px; z-index: 45;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.totalTextCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.totalTextLabel {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.totalTextValue {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-awake-blue);
+}
+
+.submitOrderBtn {
+  background: linear-gradient(135deg, #EC008C 0%, #D40076 100%);
+  color: #FFFFFF;
+  padding: 12px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-glow-pink);
+}
+
+/* Success View */
+.successWrapper {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.successIconCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #ECFDF5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.successIcon {
+  color: #059669;
+}
+
+.orderIdBadge {
+  background: #EEF2FF;
+  color: var(--color-awake-blue);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.successTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-top: 10px;
+}
+
+.successSubtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 320px;
+}
+
+.waCard {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-top: 24px;
+  width: 100%;
+  text-align: left;
+}
+
+.waCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+}
+
+.waIcon {
+  color: #16A34A;
+}
+
+.waCardText {
+  font-size: 12px;
+  color: #15803D;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.waDirectBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #16A34A;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 14px;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+}
+
+.returnHomeBtn {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-awake-blue);
+}
+
+.emptyCard {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.exploreLink {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--color-awake-blue);
+  font-weight: 700;
+}

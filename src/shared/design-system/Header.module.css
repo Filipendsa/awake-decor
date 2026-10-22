@@ -1,0 +1,54 @@
+﻿.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  transition: all var(--transition-smooth);
+}
+
+.white {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blue {
+  background: var(--color-awake-blue);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.simBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #EC008C 0%, #D40076 100%);
+  color: #FFFFFF;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: var(--shadow-glow-pink);
+  transition: transform var(--transition-fast);
+}
+
+.simBadge:active {
+  transform: scale(0.96);
+}
+
+.sparkleIcon {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}

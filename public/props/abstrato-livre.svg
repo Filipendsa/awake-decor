@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 320" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+  </filter>
+  <g filter="url(#shadow)" stroke="#E2DAC8" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M 120 260 C 80 180 120 70 240 60 C 380 50 490 120 540 200 C 570 250 520 280 430 260 C 310 230 200 240 120 260 Z"/>
+    <path d="M 160 250 C 130 190 160 95 250 85 C 360 75 450 130 490 200 C 510 240 470 260 400 240 C 300 215 220 230 160 250 Z"/>
+    <path d="M 200 235 C 180 195 200 120 270 110 C 350 100 420 145 445 195 C 460 225 430 240 370 225 C 300 205 240 218 200 235 Z"/>
+    <path d="M 240 220 C 225 190 240 140 290 135 C 340 130 380 160 395 195 C 405 215 385 225 340 215 C 295 200 265 210 240 220 Z"/>
+  </g>
+</svg>

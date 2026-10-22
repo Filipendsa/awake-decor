@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 280" fill="none">
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+  </filter>
+  <g filter="url(#shadow)" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Cloud & Crown outline in continuous line -->
+    <path d="M 240 140 C 220 120 230 80 280 80 C 290 60 330 60 350 80 C 370 50 420 50 440 80 C 480 80 500 110 490 140 C 520 145 530 170 500 180 L 220 180 C 190 170 200 145 240 140 Z" />
+    <path d="M 330 80 L 320 40 L 345 55 L 365 30 L 385 55 L 410 40 L 400 80 Z" />
+    <circle cx="320" cy="38" r="3" fill="#FFFFFF"/>
+    <circle cx="365" cy="28" r="3" fill="#FFFFFF"/>
+    <circle cx="410" cy="38" r="3" fill="#FFFFFF"/>
+  </g>
+  <text x="90" y="240" font-family="'Great Vibes', cursive, serif" font-size="58" fill="#FFFFFF">Aqui repousa um pequeno príncipe...</text>
+</svg>
