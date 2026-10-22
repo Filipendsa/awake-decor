@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import { Sparkles, ShieldCheck } from "lucide-react";
@@ -36,17 +37,32 @@ export const Footer: React.FC = () => {
           <p className={styles.copyText}>
             © {new Date().getFullYear()} Awake Home Decor. Todos os direitos reservados.
           </p>
-          <p className={styles.poweredBy}>
-            Powered by{" "}
-            <a
-              href="https://yesode.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.yesodeLink}
-            >
-              Yesode
-            </a>
-          </p>
+          <div className={styles.poweredByBlock}>
+            <span className={styles.poweredText}>
+              Uma solução{" "}
+              <a
+                href="https://yesode.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.yesodeLink}
+              >
+                Yesode
+              </a>
+              {" "}em parceria com
+            </span>
+            <div className={styles.syncPartner}>
+              <div className={styles.syncLogoWrapper}>
+                <Image
+                  src="/brand/sync-logo.png"
+                  alt="Sync Marketing"
+                  width={20}
+                  height={20}
+                  className={styles.syncLogo}
+                />
+              </div>
+              <span className={styles.syncText}>Sync</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
