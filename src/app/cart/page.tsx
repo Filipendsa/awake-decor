@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -7,7 +7,21 @@ import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
 import { useCartStore } from "@/cart/ui/cartStore";
 import styles from "./Cart.module.css";
-import { Trash2, Plus, Minus, ArrowRight, ShieldCheck, ShoppingBag, Clock } from "lucide-react";
+import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, Clock } from "lucide-react";
+import { Money } from "@/shared/kernel/Money";
+
+function extractReais(price: Money | { amountInCents?: number; reais?: number }): number {
+  if (price instanceof Money) return price.reais;
+  if (typeof price === "object" && price !== null) {
+    if ("amountInCents" in price && typeof price.amountInCents === "number") {
+      return price.amountInCents / 100;
+    }
+    if ("reais" in price && typeof price.reais === "number") {
+      return price.reais;
+    }
+  }
+  return 0;
+}
 
 export default function CartPage() {
   const { rawItems, totalItems, subtotalReais, updateQuantity, removeItem } = useCartStore();
@@ -55,9 +69,7 @@ export default function CartPage() {
 
             <div className={styles.itemsList}>
               {rawItems.map((item) => {
-                const itemUnitPrice = (item.unitPrice as any).amountInCents
-                  ? (item.unitPrice as any).amountInCents / 100
-                  : item.unitPrice.reais || 0;
+                const itemUnitPrice = extractReais(item.unitPrice);
 
                 const itemTotal = itemUnitPrice * item.quantity;
 

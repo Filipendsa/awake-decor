@@ -1,4 +1,4 @@
-﻿
+
 import React from "react";
 import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
@@ -7,7 +7,6 @@ import { InMemoryProductRepository } from "@/catalog/infrastructure/InMemoryProd
 import { ListProductsUseCase } from "@/catalog/application/ProductUseCases";
 import { ProductCard } from "@/catalog/ui/ProductCard";
 import styles from "./Catalog.module.css";
-import { Filter } from "lucide-react";
 
 export const metadata = {
   title: "Coleção de Decorações | Awake Home Decor",

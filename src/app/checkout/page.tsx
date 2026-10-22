@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { useCartStore } from "@/cart/ui/cartStore";
 import { Order, CustomerData, PaymentMethod } from "@/checkout/domain/Order";
 import { Money } from "@/shared/kernel/Money";
 import styles from "./Checkout.module.css";
-import { ShieldCheck, Clock, CheckCircle2, MessageCircle, ArrowLeft, CreditCard, QrCode } from "lucide-react";
+import { Clock, CheckCircle2, MessageCircle, ArrowLeft, CreditCard, QrCode } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export default function CheckoutPage() {
@@ -201,11 +201,21 @@ export default function CheckoutPage() {
                 />
               </div>
               <div className={styles.inputGroup} style={{ flex: 2 }}>
-                <label className={styles.label}>Cidade / UF</label>
+                <label className={styles.label}>Cidade</label>
                 <input
                   type="text"
-                  value={`${city} / ${state}`}
+                  value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  className={styles.input}
+                />
+              </div>
+              <div className={styles.inputGroup} style={{ flex: 1 }}>
+                <label className={styles.label}>UF</label>
+                <input
+                  type="text"
+                  maxLength={2}
+                  value={state}
+                  onChange={(e) => setState(e.target.value.toUpperCase())}
                   className={styles.input}
                 />
               </div>

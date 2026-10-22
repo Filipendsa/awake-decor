@@ -1,9 +1,8 @@
-﻿"use client";
+"use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { PlacedItem, RoomScene, SceneSourceType } from "@/room-visualizer/domain/RoomScene";
+import { PlacedItem, RoomScene } from "@/room-visualizer/domain/RoomScene";
 import styles from "./VisualizerStage.module.css";
 import {
   Camera,
@@ -14,12 +13,9 @@ import {
   Maximize2,
   Trash2,
   Share2,
-  Sparkles,
   Layers,
-  ChevronDown,
   ShoppingBag,
   Sliders,
-  Check
 } from "lucide-react";
 import { useCartStore } from "@/cart/ui/cartStore";
 import { Money } from "@/shared/kernel/Money";
@@ -38,12 +34,38 @@ interface VisualizerStageProps {
   selectedProductSlug?: string;
 }
 
+let idCounter = 0;
+function createUniqueId(prefix: string): string {
+  idCounter += 1;
+  return `${prefix}-${idCounter}`;
+}
+
 export const VisualizerStage: React.FC<VisualizerStageProps> = ({
   initialProducts,
   selectedProductSlug,
 }) => {
   const [scene, setScene] = useState<RoomScene>(() => {
-    return RoomScene.create("sample", "/marketing/2.jpeg");
+    const baseScene = RoomScene.create("sample", "/marketing/2.jpeg");
+    const targetProd =
+      initialProducts.find((p) => p.slug === selectedProductSlug) ||
+      initialProducts[0];
+
+    if (targetProd) {
+      const initialItem = PlacedItem.create({
+        id: createUniqueId("item-init"),
+        productId: targetProd.id,
+        productName: targetProd.name,
+        propSvgUrl: targetProd.propSvg,
+        xPercent: 50,
+        yPercent: 40,
+        scale: 1.0,
+        rotationDeg: 0,
+        opacity: 0.95,
+      });
+      return baseScene.addItem(initialItem);
+    }
+
+    return baseScene;
   });
 
   const [activeTab, setActiveTab] = useState<"controls" | "catalog" | "perspective">("controls");
@@ -58,28 +80,6 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const addItemToCart = useCartStore((s) => s.addItem);
-
-  // On mount, auto-place requested product or first product
-  useEffect(() => {
-    const targetProd =
-      initialProducts.find((p) => p.slug === selectedProductSlug) ||
-      initialProducts[0];
-
-    if (targetProd && scene.items.length === 0) {
-      const initialItem = PlacedItem.create({
-        id: "item-" + Date.now(),
-        productId: targetProd.id,
-        productName: targetProd.name,
-        propSvgUrl: targetProd.propSvg,
-        xPercent: 50,
-        yPercent: 40,
-        scale: 1.0,
-        rotationDeg: 0,
-        opacity: 0.95,
-      });
-      setScene((prev) => prev.addItem(initialItem));
-    }
-  }, [initialProducts, selectedProductSlug]);
 
   // Start / Stop camera stream
   const toggleLiveCamera = async () => {
@@ -161,7 +161,7 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
   // Add another product from catalog tray
   const handleAddProduct = (prod: ProductCatalogItem) => {
     const newItem = PlacedItem.create({
-      id: "item-" + Date.now(),
+      id: createUniqueId(`item-${prod.id}`),
       productId: prod.id,
       productName: prod.name,
       propSvgUrl: prod.propSvg,
@@ -217,7 +217,7 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
     if (!prod) return;
 
     addItemToCart({
-      id: "cart-" + Date.now(),
+      id: createUniqueId("cart"),
       productId: prod.id,
       productName: prod.name,
       productSlug: prod.slug,

@@ -1,13 +1,12 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
 import { InMemoryProductRepository } from "@/catalog/infrastructure/InMemoryProductRepository";
-import { ListProductsUseCase } from "@/catalog/application/ProductUseCases";
 import { ProductCard } from "@/catalog/ui/ProductCard";
 import styles from "./Home.module.css";
-import { Sparkles, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, Clock, Award, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Awake Home Decor | Móveis Planejados e Decorações de Luxo",
@@ -16,7 +15,6 @@ export const metadata = {
 
 export default async function HomePage() {
   const repo = new InMemoryProductRepository();
-  const listUseCase = new ListProductsUseCase(repo);
   const featuredProducts = await repo.findFeatured();
 
   return (

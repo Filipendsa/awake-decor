@@ -1,13 +1,12 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
 import { FurnitureQuote, RoomEnvironment } from "@/planned-furniture/domain/FurnitureQuote";
 import styles from "./PlannedFurniture.module.css";
-import { Ruler, Sparkles, CheckCircle2, MessageCircle, Clock, Award, ShieldCheck } from "lucide-react";
+import { Sparkles, CheckCircle2, MessageCircle, Clock, Award } from "lucide-react";
 
 export default function PlannedFurniturePage() {
   const [customerName, setCustomerName] = useState("");
