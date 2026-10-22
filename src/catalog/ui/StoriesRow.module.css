@@ -1,0 +1,92 @@
+.section {
+  width: 100%;
+  padding: 12px 0 18px;
+  overflow: hidden;
+}
+
+.scrollContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 4px 20px 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .scrollContainer {
+    justify-content: center;
+    gap: 28px;
+  }
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 68px;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.storyCard:hover {
+  transform: translateY(-2px);
+}
+
+.storyCard:active {
+  transform: scale(0.95);
+}
+
+.bubbleRing {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  padding: 2.5px;
+  background: linear-gradient(135deg, var(--color-awake-blue) 0%, var(--gold-warm) 50%, var(--color-awake-pink) 100%);
+  box-shadow: 0 4px 12px rgba(28, 51, 120, 0.12);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.storyCard:hover .bubbleRing {
+  box-shadow: 0 6px 18px rgba(28, 51, 120, 0.22);
+}
+
+.bubbleInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 2px solid var(--bg-app);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.storyCard:hover .image {
+  transform: scale(1.08);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tag {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  line-height: 1;
+}

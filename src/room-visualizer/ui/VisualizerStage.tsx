@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { PlacedItem, RoomScene } from "@/room-visualizer/domain/RoomScene";
 import styles from "./VisualizerStage.module.css";
@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useCartStore } from "@/cart/ui/cartStore";
 import { Money } from "@/shared/kernel/Money";
+import { useToast } from "@/shared/design-system/Toast";
 
 interface ProductCatalogItem {
   id: string;
@@ -77,16 +78,30 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
   const [tiltY, setTiltY] = useState<number>(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const addItemToCart = useCartStore((s) => s.addItem);
+  const { showToast } = useToast();
+
+  // Stop camera tracks on component unmount
+  useEffect(() => {
+    return () => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
+        streamRef.current = null;
+      }
+    };
+  }, []);
 
   // Start / Stop camera stream
   const toggleLiveCamera = async () => {
     if (isCameraActive) {
-      if (videoRef.current && videoRef.current.srcObject) {
-        const stream = videoRef.current.srcObject as MediaStream;
-        stream.getTracks().forEach((t) => t.stop());
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((t) => t.stop());
+        streamRef.current = null;
+      }
+      if (videoRef.current) {
         videoRef.current.srcObject = null;
       }
       setIsCameraActive(false);
@@ -94,19 +109,34 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
     }
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { ideal: "environment" } },
-        audio: false,
-      });
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: "environment" } },
+          audio: false,
+        });
+      } catch {
+        // Fallback for devices without rear environment camera (eg. desktop/laptop webcam)
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+      }
 
+      streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play();
+        try {
+          await videoRef.current.play();
+        } catch {
+          // Handled inline
+        }
       }
       setIsCameraActive(true);
       setScene((prev) => prev.changeBackground("", "camera_live"));
+      showToast("Câmera ao vivo conectada", "sparkle");
     } catch (err) {
-      alert("Não foi possível acessar a câmera. Verifique as permissões de vídeo.");
+      showToast("Não foi possível acessar a câmera. Verifique as permissões.", "info");
       console.error(err);
     }
   };
@@ -228,7 +258,7 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
       quantity: 1,
     });
 
-    alert(`"${prod.name}" foi adicionado à sua Sacola!`);
+    showToast(`"${prod.name}" adicionado à sua Sacola!`, "sparkle");
   };
 
   const selectedItem = scene.selectedItem;
@@ -238,15 +268,14 @@ export const VisualizerStage: React.FC<VisualizerStageProps> = ({
       {/* Visualizer Canvas Stage */}
       <div className={styles.stage} ref={stageRef}>
         {/* Background Source: Live Camera or Photo */}
-        {isCameraActive ? (
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            autoPlay
-            className={styles.cameraFeed}
-          />
-        ) : (
+        <video
+          ref={videoRef}
+          playsInline
+          muted
+          autoPlay
+          className={`${styles.cameraFeed} ${isCameraActive ? styles.cameraFeedActive : styles.cameraFeedHidden}`}
+        />
+        {!isCameraActive && (
           <Image
             src={scene.backgroundMediaUrl || "/marketing/2.jpeg"}
             alt="Ambiente de projeção"

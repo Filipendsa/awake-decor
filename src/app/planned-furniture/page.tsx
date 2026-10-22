@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
+import { Footer } from "@/shared/design-system/Footer";
 import { FurnitureQuote, RoomEnvironment } from "@/planned-furniture/domain/FurnitureQuote";
 import styles from "./PlannedFurniture.module.css";
 import { Sparkles, CheckCircle2, MessageCircle, Clock, Award } from "lucide-react";
@@ -221,6 +222,7 @@ export default function PlannedFurniturePage() {
         </div>
       </main>
 
+      <Footer />
       <BottomNav />
     </div>
   );

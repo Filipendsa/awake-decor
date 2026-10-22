@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
+import { Footer } from "@/shared/design-system/Footer";
 import { useCartStore } from "@/cart/ui/cartStore";
 import { Order, CustomerData, PaymentMethod } from "@/checkout/domain/Order";
 import { Money } from "@/shared/kernel/Money";
@@ -311,6 +312,7 @@ export default function CheckoutPage() {
         </form>
       </main>
 
+      <Footer />
       <BottomNav />
     </div>
   );

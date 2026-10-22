@@ -1,4 +1,4 @@
-﻿.container {
+.container {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 84px);
@@ -25,6 +25,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  inset: 0;
+  transition: opacity 200ms ease;
+}
+
+.cameraFeedActive {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.cameraFeedHidden {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .gridHint {

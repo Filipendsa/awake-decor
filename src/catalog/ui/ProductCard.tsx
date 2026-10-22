@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/catalog/domain/Product";
@@ -12,60 +12,73 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <article className={styles.card}>
-      <Link href={`/catalog/${product.slug.toString()}`} className={styles.imageLink}>
-        <div className={styles.imageWrapper}>
+      <div className={styles.imageContainer}>
+        <Link href={`/catalog/${product.slug.toString()}`} className={styles.imageLink} aria-label={product.name}>
           <Image
             src={product.mockupImage}
             alt={product.name}
             fill
-            sizes="(max-width: 480px) 100vw, 400px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={styles.image}
             priority={product.isFeatured}
           />
-          <div className={styles.gradientOverlay} />
+          <div className={styles.imageShade} />
+        </Link>
 
-          {product.isFeatured && (
-            <span className={styles.featuredBadge}>Destaque</span>
-          )}
-
-          <Link
-            href={`/visualizer?product=${product.slug.toString()}`}
-            className={styles.quickSimBtn}
-            aria-label={`Ver ${product.name} no meu espaço`}
-          >
-            <Sparkles size={14} />
-            <span>Ver no espaço</span>
-          </Link>
+        {/* Minimal Price Badge no canto */}
+        <div className={styles.priceTag}>
+          <span>{product.basePrice.formatBRL()}</span>
         </div>
-      </Link>
 
-      <div className={styles.content}>
-        <div className={styles.deliveryBadge}>
-          <Clock size={12} />
-          <span>Entrega expressa: {product.deliveryDaysMin} a {product.deliveryDaysMax} dias</span>
+        {/* Quick Simulator Shortcut */}
+        <Link
+          href={`/visualizer?product=${product.slug.toString()}`}
+          className={styles.simPill}
+          title="Ver no meu espaço"
+          aria-label={`Ver ${product.name} no simulador`}
+        >
+          <Sparkles size={13} className={styles.simIcon} />
+          <span>Simular 3D</span>
+        </Link>
+      </div>
+
+      <div className={styles.body}>
+        <div className={styles.metaRow}>
+          <span className={styles.categoryName}>{formatCategory(product.category)}</span>
+          <span className={styles.deliveryTime}>
+            <Clock size={11} />
+            {product.deliveryDaysMin}–{product.deliveryDaysMax} dias
+          </span>
         </div>
 
         <Link href={`/catalog/${product.slug.toString()}`} className={styles.titleLink}>
-          <h3 className={styles.name}>{product.name}</h3>
+          <h3 className={styles.title}>{product.name}</h3>
         </Link>
+
         <p className={styles.subtitle}>{product.subtitle}</p>
 
-        <div className={styles.footerRow}>
-          <div className={styles.priceCol}>
-            <span className={styles.priceLabel}>A partir de</span>
-            <span className={styles.priceValue}>{product.basePrice.formatBRL()}</span>
-          </div>
-
+        <div className={styles.actionRow}>
           <Link
             href={`/catalog/${product.slug.toString()}`}
-            className={styles.detailBtn}
-            aria-label={`Ver detalhes de ${product.name}`}
+            className={styles.outlineBtn}
           >
             <span>Ver opções</span>
-            <ArrowRight size={16} />
+            <ArrowRight size={14} className={styles.arrowIcon} />
           </Link>
         </div>
       </div>
     </article>
   );
 };
+
+function formatCategory(cat: string): string {
+  const map: Record<string, string> = {
+    fe: "Fé & Devoção",
+    abstrato: "Escultura Abstrata",
+    natureza: "Natureza & Aves",
+    familia: "Família & Lar",
+    infantil: "Linha Infantil",
+    frases: "Tipografia & Frases",
+  };
+  return map[cat] || "Decoração";
+}

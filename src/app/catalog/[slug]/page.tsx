@@ -1,7 +1,8 @@
-﻿import React, { Suspense } from "react";
+import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
+import { Footer } from "@/shared/design-system/Footer";
 import { InMemoryProductRepository } from "@/catalog/infrastructure/InMemoryProductRepository";
 import { GetProductBySlugUseCase } from "@/catalog/application/ProductUseCases";
 import { ProductDetailView } from "./ProductDetailView";
@@ -71,6 +72,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <ProductDetailView product={serializedProduct} />
         </Suspense>
       </main>
+      <Footer />
       <BottomNav />
     </div>
   );

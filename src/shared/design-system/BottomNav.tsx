@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Sparkles, ShoppingBag, Compass, Home } from "lucide-react";
+import { Home, LayoutGrid, Sparkles, ShoppingBag } from "lucide-react";
 import styles from "./BottomNav.module.css";
 import { useCartStore } from "@/cart/ui/cartStore";
 
@@ -13,14 +13,14 @@ export const BottomNav: React.FC = () => {
 
   const navItems = [
     { label: "Início", href: "/", icon: Home },
-    { label: "Catálogo", href: "/catalog", icon: Compass },
-    { label: "Espaço 3D", href: "/visualizer", icon: Sparkles },
+    { label: "Catálogo", href: "/catalog", icon: LayoutGrid },
+    { label: "Simulador", href: "/visualizer", icon: Sparkles },
     { label: "Sacola", href: "/cart", icon: ShoppingBag, badge: cartItemsCount },
   ];
 
   return (
-    <nav className={styles.navContainer} aria-label="Navegação Principal">
-      <div className={styles.dockBar}>
+    <nav className={styles.islandWrapper} aria-label="Navegação em Ilha">
+      <div className={styles.islandPill}>
         {navItems.map((item) => {
           const isActive =
             pathname === item.href ||
@@ -31,16 +31,22 @@ export const BottomNav: React.FC = () => {
             <Link
               key={item.href}
               href={item.href}
-              className={`${styles.dockItem} ${isActive ? styles.activeItem : ""}`}
+              className={`${styles.navButton} ${isActive ? styles.active : ""}`}
+              aria-label={item.label}
+              title={item.label}
             >
-              <div className={styles.iconContainer}>
-                <Icon size={18} strokeWidth={isActive ? 2.4 : 1.7} />
+              {isActive && <span className={styles.activeBubble} />}
+              <div className={styles.iconWrapper}>
+                <Icon
+                  size={20}
+                  strokeWidth={isActive ? 2.0 : 1.5}
+                  className={styles.icon}
+                />
                 {typeof item.badge === "number" && item.badge > 0 && (
                   <span className={styles.badge}>{item.badge}</span>
                 )}
               </div>
-              <span className={styles.label}>{item.label}</span>
-              {isActive && <span className={styles.activeDot} />}
+              <span className={styles.labelText}>{item.label}</span>
             </Link>
           );
         })}

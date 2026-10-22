@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
+import { Footer } from "@/shared/design-system/Footer";
 import { useCartStore } from "@/cart/ui/cartStore";
 import styles from "./Cart.module.css";
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, Clock } from "lucide-react";
@@ -157,6 +158,7 @@ export default function CartPage() {
         )}
       </main>
 
+      <Footer />
       <BottomNav />
     </div>
   );

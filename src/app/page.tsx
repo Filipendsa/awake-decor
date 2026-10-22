@@ -3,8 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/shared/design-system/Header";
 import { BottomNav } from "@/shared/design-system/BottomNav";
+import { Footer } from "@/shared/design-system/Footer";
 import { InMemoryProductRepository } from "@/catalog/infrastructure/InMemoryProductRepository";
 import { ProductCard } from "@/catalog/ui/ProductCard";
+import { StoriesRow } from "@/catalog/ui/StoriesRow";
+import { PromoBanner } from "@/catalog/ui/PromoBanner";
 import styles from "./Home.module.css";
 import { Sparkles, Clock, Award, ArrowRight } from "lucide-react";
 
@@ -22,42 +25,50 @@ export default async function HomePage() {
       <Header theme="white" />
 
       <main className="page-bottom-pad">
-        {/* Hero Section com Marketing Real */}
+        {/* Stories / Destaques Rápidos em Bolhas (Instagram style) */}
+        <StoriesRow />
+
+        {/* Hero Section Editorial Responsivo */}
         <section className={styles.heroSection}>
-          <div className={styles.heroImageWrapper}>
-            <Image
-              src="/marketing/11.jpeg"
-              alt="Awake Home Decor Sofisticação"
-              fill
-              priority
-              className={styles.heroImage}
-            />
-            <div className={styles.heroGradient} />
-          </div>
+          <div className={styles.heroInner}>
+            <div className={styles.heroImageWrapper}>
+              <Image
+                src="/marketing/11.jpeg"
+                alt="Awake Home Decor Sofisticação"
+                fill
+                priority
+                className={styles.heroImage}
+              />
+              <div className={styles.heroGradient} />
+            </div>
 
-          <div className={styles.heroOverlayContent}>
-            <span className={styles.heroKicker}>Design & Precisão</span>
-            <h1 className={styles.heroTitle}>
-              Uma composição que traduz o verdadeiro significado de <span className={styles.highlightPink}>sofisticação</span>.
-            </h1>
-            <p className={styles.heroSubtitle}>
-              Peças de parede contemporâneas e móveis sob medida com acabamento impecável e entrega ágil garantida.
-            </p>
+            <div className={styles.heroOverlayContent}>
+              <span className={styles.heroKicker}>Design & Precisão</span>
+              <h1 className={styles.heroTitle}>
+                Uma composição que traduz o verdadeiro significado de <span className={styles.highlightPink}>sofisticação</span>.
+              </h1>
+              <p className={styles.heroSubtitle}>
+                Peças de parede contemporâneas e móveis sob medida com acabamento impecável e entrega ágil garantida.
+              </p>
 
-            <div className={styles.heroCtas}>
-              <Link href="/visualizer" className={styles.primaryCta}>
-                <Sparkles size={18} />
-                <span>Ver no meu espaço</span>
-              </Link>
-              <Link href="/catalog" className={styles.secondaryCta}>
-                <span>Explorar coleção</span>
-                <ArrowRight size={16} />
-              </Link>
+              <div className={styles.heroCtas}>
+                <Link href="/visualizer" className={styles.primaryCta}>
+                  <Sparkles size={17} />
+                  <span>Ver no meu espaço</span>
+                </Link>
+                <Link href="/catalog" className={styles.secondaryCta}>
+                  <span>Explorar catálogo</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Value Proposition Banners: Prazo e Qualidade (Diferenciais) */}
+        {/* Banner de Promoção Primeira Compra */}
+        <PromoBanner />
+
+        {/* Diferenciais Awake: Prazo e Acabamento */}
         <section className={styles.valuePropsSection}>
           <div className={styles.valueCard}>
             <div className={styles.iconCircle}>
@@ -75,30 +86,30 @@ export default async function HomePage() {
             </div>
             <div>
               <h3 className={styles.propTitle}>Acabamento de Luxo</h3>
-              <p className={styles.propDesc}>Corte a laser milimétrico, MDF naval prime e acrílico de alta densidade.</p>
+              <p className={styles.propDesc}>Corte a laser milimétrico, MDF naval prime e pintura nobre.</p>
             </div>
           </div>
         </section>
 
-        {/* Feature Teaser do Simulador */}
+        {/* Diferencial do Simulador 3D */}
         <section className={styles.simulatorTeaser}>
           <div className={styles.teaserCard}>
             <div className={styles.teaserBadge}>
-              <Sparkles size={14} />
-              <span>Diferencial Exclusivo</span>
+              <Sparkles size={13} />
+              <span>Simulador no Seu Espaço</span>
             </div>
             <h2 className={styles.teaserTitle}>Veja exatamente como fica na sua parede antes de comprar</h2>
             <p className={styles.teaserDesc}>
-              Tire uma foto ou use a câmera ao vivo do celular para posicionar a peça em tamanho real e perspectiva 3D.
+              Use a câmera ao vivo ou envie uma foto para posicionar as peças decorativas com ajuste de escala e rotação em tempo real.
             </p>
             <Link href="/visualizer" className={styles.teaserBtn}>
-              <span>Abrir Simulador Interativo</span>
-              <ArrowRight size={16} />
+              <span>Abrir Simulador 3D</span>
+              <ArrowRight size={15} />
             </Link>
           </div>
         </section>
 
-        {/* Coleções em Destaque */}
+        {/* Coleção em Destaque com Grid Responsivo */}
         <section className={styles.collectionSection}>
           <div className={styles.sectionHeader}>
             <div>
@@ -106,7 +117,8 @@ export default async function HomePage() {
               <h2 className={styles.sectionTitle}>Peças em Destaque</h2>
             </div>
             <Link href="/catalog" className={styles.viewAllLink}>
-              Ver todas ({featuredProducts.length})
+              <span>Ver todas ({featuredProducts.length})</span>
+              <ArrowRight size={14} />
             </Link>
           </div>
 
@@ -118,30 +130,34 @@ export default async function HomePage() {
         </section>
 
         {/* Móveis Planejados Promo Banner */}
-        <section className={styles.furnitureBanner}>
-          <div className={styles.furnitureImageWrapper}>
-            <Image
-              src="/marketing/2.jpeg"
-              alt="Móveis Planejados Awake"
-              fill
-              className={styles.furnitureBg}
-            />
-            <div className={styles.furnitureGradient} />
-          </div>
-          <div className={styles.furnitureContent}>
-            <span className={styles.furnitureKicker}>Sob Medida</span>
-            <h2 className={styles.furnitureTitle}>Móveis Planejados com entrega no prazo</h2>
-            <p className={styles.furnitureText}>
-              Cozinhas, livings e dormitórios desenhados para otimizar seu espaço com padrão de marcenaria de luxo.
-            </p>
-            <Link href="/planned-furniture" className={styles.furnitureBtn}>
-              <span>Solicitar Orçamento 3D</span>
-              <ArrowRight size={16} />
-            </Link>
+        <section className={styles.furnitureSection}>
+          <div className={styles.furnitureBanner}>
+            <div className={styles.furnitureImageWrapper}>
+              <Image
+                src="/marketing/2.jpeg"
+                alt="Móveis Planejados Awake"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1200px"
+                className={styles.furnitureBg}
+              />
+              <div className={styles.furnitureGradient} />
+            </div>
+            <div className={styles.furnitureContent}>
+              <span className={styles.furnitureKicker}>Sob Medida</span>
+              <h2 className={styles.furnitureTitle}>Móveis Planejados com entrega garantida no prazo</h2>
+              <p className={styles.furnitureText}>
+                Cozinhas, livings e dormitórios desenhados para otimizar seu espaço com padrão de marcenaria de luxo.
+              </p>
+              <Link href="/planned-furniture" className={styles.furnitureBtn}>
+                <span>Solicitar Orçamento 3D</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </section>
       </main>
 
+      <Footer />
       <BottomNav />
     </div>
   );

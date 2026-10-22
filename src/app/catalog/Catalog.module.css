@@ -1,74 +1,184 @@
-﻿.headerArea {
-  padding: 20px 20px 10px;
+.topSearchSection {
+  padding: 16px 20px 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 12px 18px;
+  box-shadow: 0 2px 10px rgba(28, 26, 23, 0.04);
+  transition: all var(--transition-fast);
+}
+
+.searchBar:focus-within {
+  border-color: var(--color-awake-blue);
+  box-shadow: 0 4px 18px rgba(28, 51, 120, 0.12);
+}
+
+.searchIcon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.searchInput::placeholder {
+  color: var(--text-tertiary);
+}
+
+.categoryFilterSection {
+  padding: 8px 20px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.categoryHeader {
+  margin-bottom: 10px;
 }
 
 .kicker {
   font-size: 11px;
-  font-weight: 800;
-  color: var(--color-awake-pink);
+  font-weight: 700;
+  color: var(--gold-warm);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
 }
 
-.title {
-  font-size: 24px;
+.sectionTitle {
+  font-size: 18px;
   font-weight: 800;
-  color: var(--color-text-main);
-  margin-top: 4px;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-  margin-top: 6px;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+  margin-top: 2px;
 }
 
 .filterScroll {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding: 16px 0 8px;
-  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filterScroll::-webkit-scrollbar {
+  display: none;
 }
 
 .filterPill {
   white-space: nowrap;
   font-size: 12px;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: var(--radius-full);
-  background: #F1F5F9;
-  color: #475569;
+  background: #FFFFFF;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 4px rgba(28, 26, 23, 0.03);
   transition: all var(--transition-fast);
 }
 
+.filterPill:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
 .activePill {
-  background: var(--color-awake-blue);
+  background: var(--text-primary);
   color: #FFFFFF;
-  font-weight: 700;
+  border-color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(28, 26, 23, 0.16);
+}
+
+.activePill:hover {
+  background: #000000;
+  color: #FFFFFF;
 }
 
 .gridSection {
-  padding: 12px 20px 24px;
+  padding: 8px 20px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .gridHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .counter {
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-text-muted);
+  color: var(--text-tertiary);
 }
 
 .productGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 540px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .productGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+.emptyState {
+  padding: 48px 20px;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-medium);
+}
+
+.emptyTitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.resetFilterBtn {
+  display: inline-flex;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-awake-blue);
+  color: var(--color-awake-blue);
+  font-size: 13px;
+  font-weight: 600;
 }
