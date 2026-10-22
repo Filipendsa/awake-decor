@@ -153,3 +153,9 @@
     font-size: 11px;
   }
 }
+
+@media (min-width: 1024px) {
+  .islandWrapper {
+    display: none !important;
+  }
+}

@@ -9,23 +9,28 @@
 }
 
 .white {
-  background: rgba(247, 245, 240, 0.88);
+  background: rgba(247, 245, 240, 0.92);
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .blue {
-  background: rgba(19, 36, 84, 0.92);
+  background: rgba(19, 36, 84, 0.94);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 20px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
 }
 
 .logoLink {
@@ -43,10 +48,72 @@
   height: 32px;
 }
 
+/* Desktop Navigation (Oculto em Mobile/Tablet, Visível em Desktop) */
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.65);
+    padding: 5px 8px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 2px 8px rgba(28, 26, 23, 0.03);
+  }
+}
+
+.desktopNavLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.desktopNavLink:hover {
+  color: var(--color-awake-blue);
+  background: rgba(28, 51, 120, 0.04);
+}
+
+.activeNavLink {
+  color: var(--color-awake-blue);
+  font-weight: 700;
+  background: rgba(28, 51, 120, 0.08);
+}
+
+.blue .desktopNav {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.blue .desktopNavLink {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.blue .desktopNavLink:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.blue .activeNavLink {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .rightActions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .searchShortcut {
@@ -76,6 +143,44 @@
   .searchPrompt {
     display: inline;
   }
+}
+
+/* Desktop Cart Button */
+.desktopCartBtn {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopCartBtn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border-medium);
+    color: var(--text-primary);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+  }
+
+  .desktopCartBtn:hover {
+    border-color: var(--color-awake-blue);
+    color: var(--color-awake-blue);
+    background: rgba(28, 51, 120, 0.04);
+  }
+}
+
+.cartBadge {
+  background: var(--color-awake-pink);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  line-height: 1.4;
 }
 
 .simBadge {
@@ -109,6 +214,15 @@
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
   color: #E2E8F0;
+}
+
+.blue .desktopCartBtn {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.blue .desktopCartBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .sparkleIcon {
